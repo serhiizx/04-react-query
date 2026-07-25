@@ -20,7 +20,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+
+      # Проєкт використовує pnpm-lock.yaml — `vercel build` викликає pnpm, якого немає на раннері
+      - name: Install pnpm
+        run: npm install -g pnpm@10
 
       - name: Install Vercel CLI
         run: npm install -g vercel@latest
